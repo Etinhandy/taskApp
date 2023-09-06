@@ -1,14 +1,7 @@
 import {
-  Box,
   Button,
   VStack,
-  Text,
   Heading,
-  Card,
-  CardBody,
-  CardFooter,
-  CardHeader,
-  Icon,
   useDisclosure,
   Modal,
   ModalOverlay,
@@ -21,9 +14,8 @@ import {
   Input,
   FormLabel,
 } from "@chakra-ui/react";
-import { RiDeleteBin5Line } from "react-icons/ri";
-import { AiOutlineEdit } from "react-icons/ai";
 import { useState } from "react";
+import DisplayTask from "./DisplayTask";
 
 const TodoList = () => {
   const initialState = {
@@ -46,50 +38,16 @@ const TodoList = () => {
         ])
       : alert("Enter a valid task");
   };
-  const deleteHandler = (index) => {
-    const newTaskList = taskArray.filter((todo, i) => i !== index);
-    setTaskArray(newTaskList);
-  };
-
-  const renderTask = taskArray.map((value, index) => {
-    const { title, body, date } = value.todo;
-    console.log(title);
-
-    return (
-      <Card
-        w={{ base: "100%", md: "280px" }}
-        boxShadow={"0 0 5px rgba(0, 0, 0, 0.4)"}
-        h={"15rem"}
-        mb={"0.5rem"}
-        key={index}
-      >
-        <CardHeader>
-          <Heading color={"red"} size="sm" textAlign={"center"}>
-            {title}
-          </Heading>
-        </CardHeader>
-        <CardBody>
-          <Text>{body}</Text>
-        </CardBody>
-        <CardFooter display={"flex"} justifyContent={"space-between"}>
-          <Text>{date}</Text>
-          <div>
-            <Icon
-              as={RiDeleteBin5Line}
-              boxSize={"25"}
-              color={"red.500"}
-              cursor={"pointer"}
-              onClick={() => deleteHandler(index)}
-            />
-          </div>
-        </CardFooter>
-      </Card>
-    );
-  });
 
   return (
     <>
-      <VStack w={"100%"} h={"30vh"} justifyContent={"center"} bg={"#F5F5F5F5"}>
+      <VStack
+        w={"100%"}
+        h={"30vh"}
+        justifyContent={"center"}
+        color={"red"}
+        bg={"#F5F5F5F5"}
+      >
         <Heading> Todo List</Heading>
         <Button onClick={onOpen} bg={"green.400"}>
           create Task
@@ -144,17 +102,7 @@ const TodoList = () => {
         </Modal>
       </VStack>
 
-      <Box
-        w={"100%"}
-        minH={"70vh"}
-        display={"grid"}
-        gridTemplateColumns={"repeat(auto-fit, minmax(300px, 1fr))"}
-        justifyItems={"center"}
-        p={"1rem"}
-        bg={"telegram.300"}
-      >
-        {renderTask}
-      </Box>
+      <DisplayTask arr={taskArray} />
     </>
   );
 };

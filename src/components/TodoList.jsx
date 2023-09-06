@@ -102,7 +102,7 @@ const TodoList = () => {
         </Modal>
       </VStack>
 
-      <DisplayTask arr={taskArray} />
+      <DisplayTask arr={taskArray} setArr={setTaskArray} />
     </>
   );
 };

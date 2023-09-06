@@ -147,7 +147,6 @@ const TodoList = () => {
       <Box
         w={"100%"}
         minH={"70vh"}
-        border={"1px solid red"}
         display={"grid"}
         gridTemplateColumns={"repeat(auto-fit, minmax(300px, 1fr))"}
         justifyItems={"center"}

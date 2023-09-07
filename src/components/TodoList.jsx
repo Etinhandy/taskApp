@@ -37,6 +37,7 @@ const TodoList = () => {
           { id: new Date().getMilliseconds(), todo: todo },
         ])
       : alert("Enter a valid task");
+      setTodo(initialState);
   };
 
   return (
